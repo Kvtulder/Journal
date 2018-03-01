@@ -11,6 +11,7 @@ public enum Mood {
     RELAXED,
     CRYING;
 
+    // Returns the resource id of a smiley corresponding to the chosen mood
     public int getSmiley() {
         switch (this) {
             case HAPPY:

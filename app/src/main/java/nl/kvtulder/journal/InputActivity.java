@@ -16,13 +16,14 @@ public class InputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
 
+        // set the custom spinner adapter to show the smileys
         Spinner spinner = findViewById(R.id.moodDropdown);
         spinner.setAdapter(new SpinnerAdapter(this,Mood.values(),R.layout.spinner_item));
     }
 
     public void saveButtonClicked(View view) {
 
-
+        // save all the details of the journal
         EditText editTitle = findViewById(R.id.editTitle);
         String title = editTitle.getText().toString();
 
@@ -32,11 +33,14 @@ public class InputActivity extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.moodDropdown);
         Mood mood = (Mood) spinner.getSelectedItem();
 
+        // get the current time
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
         JournalEntry entry = new JournalEntry(title,content, mood,timestamp,false);
 
+        // save the journal!
         EntryDatabase.getInstance(this).addEntry(entry);
+
+        // close the activity
         this.finish();
     }
 }

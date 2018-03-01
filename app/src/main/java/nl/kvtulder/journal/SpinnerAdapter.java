@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class SpinnerAdapter extends BaseAdapter {
 
-
     Mood[] objects;
     Context context;
     int resource;
@@ -44,10 +43,12 @@ public class SpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
+        // create the spinner item if not present
         if(convertView==null){
             convertView = LayoutInflater.from(context).inflate(resource, parent, false);
         }
 
+        // fill in/update the details
         ImageView moodImage = convertView.findViewById(R.id.moodImage);
         moodImage.setImageResource(objects[position].getSmiley());
 

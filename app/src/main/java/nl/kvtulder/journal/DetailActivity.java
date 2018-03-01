@@ -13,9 +13,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // retrieve the clicked journal entry
         Intent intent = getIntent();
         JournalEntry entry = (JournalEntry) intent.getSerializableExtra("entry");
 
+        // fill in the details
         ImageView journalSmiley = findViewById(R.id.journalSmiley);
         journalSmiley.setImageResource(entry.getMood().getSmiley());
 
@@ -23,7 +25,7 @@ public class DetailActivity extends AppCompatActivity {
         title.setText(entry.getTitle());
 
         TextView detail = findViewById(R.id.journalDetail);
-        detail.setText("TODO");
+        detail.setText(entry.getTimestamp() + " ; " + entry.getMood().toString().toLowerCase() );
 
         TextView content = findViewById(R.id.journalContent);
         content.setText(entry.getContent());
